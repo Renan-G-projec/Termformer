@@ -1,16 +1,21 @@
 [gd_scene format=3 uid="uid://dndf1cipa12op"]
 
 [ext_resource type="Script" uid="uid://8yoijypyfse3" path="res://scripts/terminal_ui.gd" id="1_bygfb"]
+[ext_resource type="Shader" uid="uid://dchdvu5xg5ud3" path="res://shaders/terminal_ui.gdshader" id="2_lcd6i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2k3dv"]
+shader = ExtResource("2_lcd6i")
+shader_parameter/frequency = 200.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcd6i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bygfb"]
 
 [node name="TerminalUI" type="CanvasLayer" unique_id=270087314]
-visible = false
 script = ExtResource("1_bygfb")
 
 [node name="Terminal" type="Panel" parent="." unique_id=753106432]
+material = SubResource("ShaderMaterial_2k3dv")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -49,6 +54,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_font_sizes/normal_font_size = 6
+text = "dssd"
 fit_content = true
 scroll_active = false
 
@@ -58,6 +64,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lcd6i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bygfb")
+text = "adsfsdf"
 emoji_menu_enabled = false
 drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false

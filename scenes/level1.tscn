@@ -22,6 +22,7 @@ tile_set = ExtResource("3_m7ahb")
 position = Vector2(160, 91)
 
 [node name="TerminalUI" parent="." unique_id=753106432 instance=ExtResource("2_m7ahb")]
+visible = false
 
 [node name="Door" parent="." unique_id=414273485 instance=ExtResource("5_ru4tf")]
 position = Vector2(432, 176)
