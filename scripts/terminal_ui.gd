@@ -1,9 +1,9 @@
 # Ad Maiorem Dei Gloriam!
 class_name Terminal
-extends Panel
+extends CanvasLayer
 
-@onready var input: LineEdit = $Margin/Control/VBoxContainer/InputLine
-@onready var label: RichTextLabel = $Margin/Control/VBoxContainer/TextBuffer
+@onready var input: LineEdit = $Terminal/Margin/Control/VBoxContainer/InputLine
+@onready var label: RichTextLabel = $Terminal/Margin/Control/VBoxContainer/TextBuffer
 
 var _built_in_commands: Dictionary[String, Callable] = {
 	"clear": _clear

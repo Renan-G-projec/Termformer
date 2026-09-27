@@ -7,6 +7,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bygfb"]
 
 [node name="TerminalUI" type="CanvasLayer" unique_id=270087314]
+visible = false
+script = ExtResource("1_bygfb")
 
 [node name="Terminal" type="Panel" parent="." unique_id=753106432]
 anchors_preset = 15
@@ -14,7 +16,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_bygfb")
 
 [node name="Margin" type="MarginContainer" parent="Terminal" unique_id=1826352929]
 propagate_maximum_size = false
@@ -58,9 +59,9 @@ theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lcd6i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bygfb")
 emoji_menu_enabled = false
-deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false
 caret_blink = true
 
+[connection signal="text_submitted" from="Terminal/Margin/Control/VBoxContainer/InputLine" to="." method="_on_input_line_text_submitted"]
 [connection signal="text_submitted" from="Terminal/Margin/Control/VBoxContainer/InputLine" to="Terminal" method="_on_input_line_text_submitted"]
