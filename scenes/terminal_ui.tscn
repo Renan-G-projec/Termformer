@@ -2,10 +2,13 @@
 
 [ext_resource type="Script" uid="uid://8yoijypyfse3" path="res://scripts/terminal_ui.gd" id="1_bygfb"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcd6i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bygfb"]
+
 [node name="TerminalUI" type="CanvasLayer" unique_id=270087314]
 
 [node name="Terminal" type="Panel" parent="." unique_id=753106432]
-clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,10 +25,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="Terminal/Margin" unique_id=582999266]
@@ -36,19 +39,26 @@ layout_mode = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 35.0
+offset_bottom = 14.0
 grow_horizontal = 2
 size_flags_vertical = 0
+theme_override_constants/separation = 0
 
 [node name="TextBuffer" type="RichTextLabel" parent="Terminal/Margin/Control/VBoxContainer" unique_id=247015785]
 layout_mode = 2
 size_flags_vertical = 2
+theme_override_font_sizes/normal_font_size = 6
 fit_content = true
 scroll_active = false
 
 [node name="InputLine" type="LineEdit" parent="Terminal/Margin/Control/VBoxContainer" unique_id=983422255]
+custom_maximum_size = Vector2(-1, 10)
 layout_mode = 2
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lcd6i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bygfb")
 emoji_menu_enabled = false
+deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false
 caret_blink = true
