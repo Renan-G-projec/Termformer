@@ -20,4 +20,4 @@ tile_set = ExtResource("3_m7ahb")
 [node name="TerminalUI" parent="." unique_id=753106432 instance=ExtResource("2_m7ahb")]
 
 [node name="Player" parent="." unique_id=1535334802 instance=ExtResource("4_dwgg1")]
-position = Vector2(62, 84)
+position = Vector2(160, 91)

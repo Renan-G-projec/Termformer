@@ -10,6 +10,7 @@ var _built_in_commands: Dictionary[String, Callable] = {
 }
 
 func _ready() -> void:
+	TerminalManager.is_terminal_ui_open = visible
 	TerminalManager.request_open_ui.connect(_on_terminal_open_ui_requested)
 	TerminalManager.request_toggle_ui.connect(_on_terminal_toggle_ui_requested)
 	TerminalManager.request_close_ui.connect(_on_terminal_close_ui_requested)
@@ -39,15 +40,18 @@ func _focus() -> void:
 
 func _on_terminal_open_ui_requested() -> void:
 	visible = true
+	TerminalManager.is_terminal_ui_open = visible
 	_focus()
 
 func _on_terminal_toggle_ui_requested() -> void:
 	visible = !visible
+	TerminalManager.is_terminal_ui_open = visible
 	if visible:
 		_focus()
 
 func _on_terminal_close_ui_requested() -> void:
 	visible = false
+	TerminalManager.is_terminal_ui_open = visible
 
 func _parse_input(command: String) -> PackedStringArray:
 	return command.strip_edges().split(" ");
