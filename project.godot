@@ -13,7 +13,7 @@ config_version=5
 config/name="termform"
 run/main_scene="uid://bgv77gp561ucn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/show_image=false
 
 [autoload]
 
@@ -29,8 +29,9 @@ gdscript/warnings/directory_rules={
 
 [display]
 
+window/size/viewport_width=320
+window/size/viewport_height=180
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [editor_plugins]
 
