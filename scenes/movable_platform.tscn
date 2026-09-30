@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://x8by0aqn3lim"]
+
+[ext_resource type="Script" uid="uid://uk0pil70x3cy" path="res://scripts/movable_platform.gd" id="1_aqu2r"]
+[ext_resource type="Texture2D" uid="uid://bo7ob0wn1xe4u" path="res://icon.svg" id="1_jibo3"]
+
+[sub_resource type="Curve2D" id="Curve2D_aqu2r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 62, -84, 0, 0, 0, 0, 310, -90)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocxxs"]
+size = Vector2(32, 32)
+
+[node name="MovablePlatform" type="Path2D" unique_id=1336651477]
+curve = SubResource("Curve2D_aqu2r")
+script = ExtResource("1_aqu2r")
+transition_type = 4
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=409074289]
+rotates = false
+
+[node name="StaticBody2D" type="AnimatableBody2D" parent="PathFollow2D" unique_id=850572071]
+sync_to_physics = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/StaticBody2D" unique_id=75331841]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_jibo3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/StaticBody2D" unique_id=1850436422]
+shape = SubResource("RectangleShape2D_ocxxs")
+one_way_collision = true
