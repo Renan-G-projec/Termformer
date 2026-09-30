@@ -54,7 +54,6 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_font_sizes/normal_font_size = 6
-text = "dssd"
 fit_content = true
 scroll_active = false
 
@@ -64,7 +63,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lcd6i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bygfb")
-text = "adsfsdf"
 emoji_menu_enabled = false
 drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false

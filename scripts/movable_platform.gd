@@ -12,11 +12,13 @@ var active: bool = true:
 			tween.play()
 		else:
 			tween.pause()
+		active = val
 
 func _ready() -> void:
 	tween.set_loops()
 	tween.tween_property($PathFollow2D, "progress_ratio", 1.0, time_to_finish).set_trans(transition_type)
 	tween.tween_property($PathFollow2D, "progress_ratio", 0.0, time_to_finish).set_trans(transition_type)
 
-func toggle_active() -> void:
+func toggle_disable() -> void:
+	
 	active = !active

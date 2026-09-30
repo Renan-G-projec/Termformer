@@ -5,17 +5,7 @@
 [ext_resource type="TileSet" uid="uid://bqmqw2t4j8q16" path="res://tilesets/lab_tileset.tres" id="3_m7ahb"]
 [ext_resource type="PackedScene" uid="uid://bqjpqbdcyk853" path="res://scenes/player.tscn" id="4_dwgg1"]
 [ext_resource type="PackedScene" uid="uid://d2kahpw7oovys" path="res://scenes/door.tscn" id="5_ru4tf"]
-[ext_resource type="Script" uid="uid://uk0pil70x3cy" path="res://scripts/movable_platform.gd" id="6_ejswk"]
-[ext_resource type="Texture2D" uid="uid://bo7ob0wn1xe4u" path="res://icon.svg" id="7_bbk5w"]
-
-[sub_resource type="Curve2D" id="Curve2D_aqu2r"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 62, -84, 0, 0, 0, 0, 310, -90)
-}
-point_count = 3
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocxxs"]
-size = Vector2(32, 32)
+[ext_resource type="PackedScene" uid="uid://x8by0aqn3lim" path="res://scenes/movable_platform.tscn" id="6_6sh32"]
 
 [node name="Level1" type="Node2D" unique_id=962637385]
 script = ExtResource("1_wwpf4")
@@ -39,23 +29,7 @@ visible = false
 position = Vector2(432, 176)
 target_level_path = "res://scenes/level2.tscn"
 
-[node name="MovablePlatform" type="Path2D" parent="." unique_id=1336651477]
+[node name="MovablePlatform" parent="." unique_id=1336651477 groups=["AbleToDisable"] instance=ExtResource("6_6sh32")]
 position = Vector2(75, 140)
-curve = SubResource("Curve2D_aqu2r")
-script = ExtResource("6_ejswk")
 transition_type = 0
 time_to_finish = 6.0
-
-[node name="PathFollow2D" type="PathFollow2D" parent="MovablePlatform" unique_id=409074289]
-rotates = false
-
-[node name="StaticBody2D" type="AnimatableBody2D" parent="MovablePlatform/PathFollow2D" unique_id=850572071]
-sync_to_physics = false
-
-[node name="Sprite2D" type="Sprite2D" parent="MovablePlatform/PathFollow2D/StaticBody2D" unique_id=75331841]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("7_bbk5w")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MovablePlatform/PathFollow2D/StaticBody2D" unique_id=1850436422]
-shape = SubResource("RectangleShape2D_ocxxs")
-one_way_collision = true

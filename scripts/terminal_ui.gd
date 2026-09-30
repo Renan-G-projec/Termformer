@@ -29,7 +29,7 @@ func _on_input_line_text_submitted(new_text: String) -> void:
 	if (_built_in_commands.has(basic_parsed_command[0])):
 		_built_in_commands[basic_parsed_command[0]].call(basic_parsed_command)
 	else:
-		TerminalManager.command_sent.emit(basic_parsed_command)
+		TerminalManager._command_sent_to_manager.emit(basic_parsed_command)
 	
 	input.clear()
 	_focus()
