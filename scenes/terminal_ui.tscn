@@ -4,8 +4,29 @@
 [ext_resource type="Shader" uid="uid://dchdvu5xg5ud3" path="res://shaders/terminal_ui.gdshader" id="2_lcd6i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2k3dv"]
+resource_local_to_scene = true
 shader = ExtResource("2_lcd6i")
-shader_parameter/frequency = 200.0
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.210000009975
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(1000, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = false
+shader_parameter/roll_speed = 0.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0
+shader_parameter/aberration = 4.7499999933364734e-08
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 1.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcd6i"]
 
