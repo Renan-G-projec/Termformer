@@ -21,11 +21,14 @@ func print_line(line: String) -> void:
 	label.append_text(line + '\n')
 	
 func clear() -> void:
+	label.text = ""
 	label.clear()
 
 func _on_input_line_text_submitted(new_text: String) -> void:
-	print_line(%Home.text + new_text)
-	var basic_parsed_command: PackedStringArray = _parse_input(new_text)
+	var sanitized_raw_command: String = new_text.strip_edges()
+	print_line(%Home.text + sanitized_raw_command)
+	
+	var basic_parsed_command: PackedStringArray = _parse_input(sanitized_raw_command)
 	if (_built_in_commands.has(basic_parsed_command[0])):
 		_built_in_commands[basic_parsed_command[0]].call(basic_parsed_command)
 	else:
@@ -53,8 +56,8 @@ func _on_terminal_close_ui_requested() -> void:
 	visible = false
 	TerminalManager.is_terminal_ui_open = visible
 
-func _parse_input(command: String) -> PackedStringArray:
-	return command.strip_edges().split(" ");
+func _parse_input(sanitized_raw_command: String) -> PackedStringArray:
+	return sanitized_raw_command.split(" ");
 	
 func _clear(_args: PackedStringArray) -> void:
 	clear()
