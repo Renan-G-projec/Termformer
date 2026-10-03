@@ -7,22 +7,28 @@ signal request_close_ui()
 
 signal request_print_line(line: String)
 signal request_clear_screen()
-signal command_sent(command: PackedStringArray)
 
 var is_terminal_ui_open: bool = false
+
+var serial_connections: Array[Node2D] = []
+
+func connect_serial_nodes(nodes: Array[Node2D]) -> void:
+	serial_connections = nodes
+func disconnect_serial_nodes() -> void:
+	serial_connections = []
 
 # General logic commands
 # The terminal manager sees if it can handle the request. If not, it propagates.
 signal _command_sent_to_manager(command: PackedStringArray)
+
 func _ready() -> void:
 	_command_sent_to_manager.connect(_on_command_sent)
-	
+
 func _on_command_sent(command: PackedStringArray) -> void:
 	match command[0]:
 		"ls":
-			var nodes := get_tree().get_nodes_in_group("AbleToDisable")
-			for node_index in range(0, nodes.size()):
-				var node: Node = nodes[node_index]
+			for node_index in range(0, serial_connections.size()):
+				var node: Node = serial_connections[node_index]
 				if (node.has_method("toggle_disable")):
 					request_print_line.emit("NOD_DIS%d" % node_index)
 			return
@@ -38,7 +44,7 @@ func _on_command_sent(command: PackedStringArray) -> void:
 			if target < 0:
 				request_print_line.emit("[color=red]Error:[/color] Target should not be negative.")
 				return
-			var nodes: Array[Node] = get_tree().get_nodes_in_group("AbleToDisable")
+			var nodes: Array[Node2D] = serial_connections
 			if target >= nodes.size():
 				request_print_line.emit("[color=red]Error:[/color] The provided argument does not match any possible togabble node.")
 				return
@@ -46,4 +52,3 @@ func _on_command_sent(command: PackedStringArray) -> void:
 			if nodes[target].has_method("toggle_disable"):
 				nodes[target].toggle_disable()
 			return
-	command_sent.emit(command)

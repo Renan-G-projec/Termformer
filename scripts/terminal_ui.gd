@@ -1,5 +1,5 @@
 # Ad Maiorem Dei Gloriam!
-class_name Terminal
+class_name TerminalUI
 extends CanvasLayer
 
 @onready var input: LineEdit = $Terminal/Margin/Control/VBoxContainer/InputLine

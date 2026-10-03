@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8yoijypyfse3" path="res://scripts/terminal_ui.gd" id="1_bygfb"]
 [ext_resource type="Shader" uid="uid://dchdvu5xg5ud3" path="res://shaders/terminal_ui.gdshader" id="2_lcd6i"]
+[ext_resource type="Shader" uid="uid://dvpkpkbeifh2k" path="res://shaders/terminal_text.gdshader" id="3_e2ku2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2k3dv"]
 resource_local_to_scene = true
@@ -23,10 +24,14 @@ shader_parameter/static_noise_intensity = 0.0
 shader_parameter/aberration = 4.7499999933364734e-08
 shader_parameter/brightness = 1.4
 shader_parameter/discolor = false
-shader_parameter/warp_amount = 1.0
+shader_parameter/warp_amount = 0.2050000097375
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e2ku2"]
+shader = ExtResource("3_e2ku2")
+shader_parameter/warp_amount = 0.205
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcd6i"]
 
@@ -44,6 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Margin" type="MarginContainer" parent="Terminal" unique_id=1826352929]
+use_parent_material = true
 propagate_maximum_size = false
 clip_contents = true
 layout_mode = 1
@@ -59,10 +65,12 @@ theme_override_constants/margin_bottom = 10
 metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="Terminal/Margin" unique_id=582999266]
+use_parent_material = true
 clip_contents = true
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Terminal/Margin/Control" unique_id=1116122243]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -72,6 +80,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = 0
 
 [node name="TextBuffer" type="RichTextLabel" parent="Terminal/Margin/Control/VBoxContainer" unique_id=247015785]
+material = SubResource("ShaderMaterial_e2ku2")
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_font_sizes/normal_font_size = 6

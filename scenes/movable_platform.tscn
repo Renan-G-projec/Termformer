@@ -21,6 +21,8 @@ transition_type = 4
 rotates = false
 
 [node name="StaticBody2D" type="AnimatableBody2D" parent="PathFollow2D" unique_id=850572071]
+collision_layer = 2
+collision_mask = 0
 sync_to_physics = false
 
 [node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/StaticBody2D" unique_id=75331841]

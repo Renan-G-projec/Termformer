@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://tss8vcydwxiv"]
+
+[ext_resource type="Texture2D" uid="uid://bo7ob0wn1xe4u" path="res://icon.svg" id="1_m430i"]
+[ext_resource type="Script" uid="uid://gims3h8dxkdg" path="res://scripts/terminal.gd" id="2_sy66w"]
+
+[sub_resource type="Gradient" id="Gradient_m430i"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ocxxs"]
+gradient = SubResource("Gradient_m430i")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+metadata/_snap_enabled = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocxxs"]
+size = Vector2(181, 170)
+
+[node name="Terminal" type="Sprite2D" unique_id=603882239]
+modulate = Color(0.41960785, 0.8745098, 0.21176471, 1)
+position = Vector2(0, -1.9073486e-06)
+texture = ExtResource("1_m430i")
+script = ExtResource("2_sy66w")
+
+[node name="FocusEffect" type="Sprite2D" parent="." unique_id=629986303]
+unique_name_in_owner = true
+visible = false
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+show_behind_parent = true
+scale = Vector2(1.042, 1.042)
+texture = ExtResource("1_m430i")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=826152022]
+color = Color(0, 0.85490197, 0, 1)
+texture = SubResource("GradientTexture2D_ocxxs")
+texture_scale = 14.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2059827489]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=213170612]
+position = Vector2(0.5, 2.000002)
+shape = SubResource("RectangleShape2D_ocxxs")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

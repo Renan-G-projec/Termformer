@@ -37,10 +37,6 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
-[global_group]
-
-AbleToDisable="Defines an object that have a method called toggle_disable()"
-
 [input]
 
 toggle_terminal={
