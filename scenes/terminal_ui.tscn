@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8yoijypyfse3" path="res://scripts/terminal_ui.gd" id="1_bygfb"]
 [ext_resource type="Shader" uid="uid://dchdvu5xg5ud3" path="res://shaders/terminal_ui.gdshader" id="2_lcd6i"]
+[ext_resource type="FontFile" uid="uid://ect1qu7p5rcu" path="res://fonts/Workbench-Regular-VariableFont_BLED,SCAN.ttf" id="3_e2ku2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2k3dv"]
 resource_local_to_scene = true
@@ -77,13 +78,39 @@ theme_override_constants/separation = 0
 [node name="TextBuffer" type="RichTextLabel" parent="Terminal/Margin/Control/VBoxContainer" unique_id=247015785]
 layout_mode = 2
 size_flags_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_e2ku2")
 theme_override_font_sizes/normal_font_size = 6
+bbcode_enabled = true
+text = "[color=lime]TERMINAL - FORMER[/color]
+Welcome to Termformer. Type 'help' to see a list of available commands.
+"
 fit_content = true
 scroll_active = false
 
-[node name="InputLine" type="LineEdit" parent="Terminal/Margin/Control/VBoxContainer" unique_id=983422255]
-custom_maximum_size = Vector2(-1, 10)
+[node name="HBoxContainer" type="HBoxContainer" parent="Terminal/Margin/Control/VBoxContainer" unique_id=634182908]
+custom_maximum_size = Vector2(-1, 6.771)
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Home" type="RichTextLabel" parent="Terminal/Margin/Control/VBoxContainer/HBoxContainer" unique_id=759605028]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+propagate_maximum_size = true
+clip_contents = false
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_e2ku2")
+theme_override_font_sizes/normal_font_size = 6
+bbcode_enabled = true
+text = "[color=cyan]usr[/color]@[color=lime]termformer[/color] /> $ "
+fit_content = true
+scroll_active = false
+
+[node name="InputLine" type="LineEdit" parent="Terminal/Margin/Control/VBoxContainer/HBoxContainer" unique_id=983422255]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_e2ku2")
 theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lcd6i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bygfb")
@@ -92,5 +119,5 @@ drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false
 caret_blink = true
 
-[connection signal="text_submitted" from="Terminal/Margin/Control/VBoxContainer/InputLine" to="." method="_on_input_line_text_submitted"]
-[connection signal="text_submitted" from="Terminal/Margin/Control/VBoxContainer/InputLine" to="Terminal" method="_on_input_line_text_submitted"]
+[connection signal="text_submitted" from="Terminal/Margin/Control/VBoxContainer/HBoxContainer/InputLine" to="." method="_on_input_line_text_submitted"]
+[connection signal="text_submitted" from="Terminal/Margin/Control/VBoxContainer/HBoxContainer/InputLine" to="Terminal" method="_on_input_line_text_submitted"]

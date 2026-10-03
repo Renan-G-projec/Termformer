@@ -2,7 +2,7 @@
 class_name TerminalUI
 extends CanvasLayer
 
-@onready var input: LineEdit = $Terminal/Margin/Control/VBoxContainer/InputLine
+@onready var input: LineEdit = %InputLine
 @onready var label: RichTextLabel = $Terminal/Margin/Control/VBoxContainer/TextBuffer
 
 var _built_in_commands: Dictionary[String, Callable] = {
@@ -24,7 +24,7 @@ func clear() -> void:
 	label.clear()
 
 func _on_input_line_text_submitted(new_text: String) -> void:
-	print_line(new_text)
+	print_line(%Home.text + new_text)
 	var basic_parsed_command: PackedStringArray = _parse_input(new_text)
 	if (_built_in_commands.has(basic_parsed_command[0])):
 		_built_in_commands[basic_parsed_command[0]].call(basic_parsed_command)
