@@ -191,6 +191,7 @@ offset = Vector2(0, -15.355086)
 position = Vector2(0, 1.9073486e-06)
 color = Color(0, 0.85490197, 0, 1)
 texture = SubResource("GradientTexture2D_ocxxs")
+texture_scale = 2.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2059827489]
 collision_layer = 0

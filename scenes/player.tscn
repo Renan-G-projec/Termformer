@@ -89,12 +89,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocxxs"]
 size = Vector2(14, 9)
 
+[sub_resource type="Gradient" id="Gradient_g2els"]
+offsets = PackedFloat32Array(0, 0.9881267, 1)
+colors = PackedColorArray(0.8156863, 0.5529412, 0.27450982, 0.827451, 0.9893586, 0.97381663, 0.9577261, 0.058336437, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ocxxs"]
+gradient = SubResource("Gradient_g2els")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
 [node name="Player" type="CharacterBody2D" unique_id=1535334802]
 collision_mask = 3
 script = ExtResource("1_g2els")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=316121606]
 unique_name_in_owner = true
+light_mask = 2
 sprite_frames = SubResource("SpriteFrames_ocxxs")
 animation = &"run"
 autoplay = "idle"
@@ -109,3 +121,12 @@ shape = SubResource("RectangleShape2D_ocxxs")
 position = Vector2(0, 1)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=152391248]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(0, -8)
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_ocxxs")
+texture_scale = 2.0
