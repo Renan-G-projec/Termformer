@@ -1,23 +1,20 @@
 # Ad Maiorem Dei Gloriam!
 class_name Terminal
-extends AnimatedSprite2D
+extends Node2D
 
 @export var connected_nodes: Array[Node2D] = []
 
-var _focused: bool = false
+@onready var _initial_scale: Vector2 = scale
 
-func _ready() -> void:
-	%FocusEffect.texture = sprite_frames.get_frame_texture("idle", 0)
+var _focused: bool = false
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	_focused = true
-	%FocusEffect.visible = _focused
-	TerminalManager.connect_serial_nodes(connected_nodes)
+	TerminalManager.connect_serial(self)
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	_focused = false
-	%FocusEffect.visible = _focused
-	TerminalManager.disconnect_serial_nodes()
+	TerminalManager.disconnect_serial()
 	TerminalManager.request_close_ui.emit()
 
 func _process(delta: float) -> void:
@@ -26,3 +23,9 @@ func _process(delta: float) -> void:
 		TerminalManager.request_open_ui.emit()
 	if Input.is_action_pressed("ui_cancel"):
 		TerminalManager.request_close_ui.emit()
+
+func squash(scale: Vector2 = Vector2(1.1, 0.9)) -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(%Sprite, "scale", scale, 0.01).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(%Sprite, "scale", _initial_scale, 0.2).set_trans(Tween.TRANS_QUAD)
+	

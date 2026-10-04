@@ -172,33 +172,28 @@ metadata/_snap_enabled = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocxxs"]
 size = Vector2(90, 50)
 
-[node name="Terminal" type="AnimatedSprite2D" unique_id=1385730432]
+[node name="Terminal" type="Node2D" unique_id=1674255862]
+script = ExtResource("2_sy66w")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1385730432]
+unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_sy66w")
 animation = &"idle"
 autoplay = "idle"
-script = ExtResource("2_sy66w")
+offset = Vector2(0, -16)
 
-[node name="FocusEffect" type="Sprite2D" parent="." unique_id=629986303]
-unique_name_in_owner = true
-modulate = Color(18.892157, 18.892157, 18.892157, 1)
-show_behind_parent = true
-light_mask = 0
-position = Vector2(0, 16)
-scale = Vector2(1.042, 1.042)
-offset = Vector2(0, -15.355086)
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=826152022]
-position = Vector2(0, 1.9073486e-06)
+[node name="PointLight2D" type="PointLight2D" parent="Sprite" unique_id=826152022]
+position = Vector2(0, -16)
 color = Color(0, 0.85490197, 0, 1)
 texture = SubResource("GradientTexture2D_ocxxs")
 texture_scale = 2.0
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2059827489]
+[node name="Area2D" type="Area2D" parent="Sprite" unique_id=2059827489]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=213170612]
-position = Vector2(0, -8.999999)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D" unique_id=213170612]
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_ocxxs")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Sprite/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Sprite/Area2D" to="." method="_on_area_2d_body_exited"]
