@@ -6,7 +6,8 @@ extends Node2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if _is_interacting() && target_level_path:
+	if _is_interacting() && !target_level_path.is_empty():
+		assert(FileAccess.file_exists(target_level_path), "There is not a next file. If the game should end, transition must be made for the end scene.")
 		get_tree().change_scene_to_file(target_level_path)
 
 func _is_interacting() -> bool:

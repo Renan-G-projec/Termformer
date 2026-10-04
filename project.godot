@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="termform"
-run/main_scene="uid://bgv77gp561ucn"
+config/name="Termform"
+run/main_scene="uid://8yvkvp8g8x2"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/show_image=false
 

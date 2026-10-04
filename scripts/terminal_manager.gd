@@ -32,7 +32,7 @@ func _on_command_sent(command: PackedStringArray) -> void:
 				if (node.has_method("toggle_disable")):
 					request_print_line.emit("NOD_DIS%d" % node_index)
 			return
-		"toggle":
+		"toggledisable":
 			if command.size() < 2:
 				request_print_line.emit("[color=red]Error:[/color] No argument was provided.")
 				return
