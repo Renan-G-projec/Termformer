@@ -55,6 +55,9 @@ func _on_command_sent(command: PackedStringArray) -> void:
 		"help":
 			_print_help()
 			return
+		"exit":
+			request_close_ui.emit()
+			return
 		_:
 			request_print_line.emit("[color=red]Error:[/color] Command not found. type [color=cyan]help[/color] to see a list of available commands.")
 

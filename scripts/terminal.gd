@@ -18,10 +18,11 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	_focused = false
 	%FocusEffect.visible = _focused
 	TerminalManager.disconnect_serial_nodes()
+	TerminalManager.request_close_ui.emit()
 
 func _process(delta: float) -> void:
 	if !_focused: return
 	if Input.is_action_just_pressed("interact"):
 		TerminalManager.request_open_ui.emit()
-	elif Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_pressed("ui_cancel"):
 		TerminalManager.request_close_ui.emit()

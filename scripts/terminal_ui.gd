@@ -23,6 +23,11 @@ func print_line(line: String) -> void:
 func clear() -> void:
 	label.text = ""
 	label.clear()
+	
+func _process(_delta: float) -> void:
+	if !visible: return
+	if Input.is_action_just_pressed("ui_cancel"):
+		TerminalManager.request_close_ui.emit()
 
 func _on_input_line_text_submitted(new_text: String) -> void:
 	input.clear()
