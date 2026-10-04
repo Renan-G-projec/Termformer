@@ -6,20 +6,32 @@ const JUMP_VELOCITY = -400.0
 
 var was_on_floor: bool
 var _direction: float = 0.0 
+var _can_slide_jump: bool = false
+var _is_wall_sliding: bool = false:
+	set(val):
+		var was_wall_sliding: bool = _is_wall_sliding
+		_is_wall_sliding = val
+		if !val && was_wall_sliding:
+			await get_tree().create_timer(0.3).timeout
+		_can_slide_jump = val
+			
 @onready var _initial_scale: Vector2 = scale
 
 func _physics_process(delta: float) -> void:
 	_update_vertical_velocity(delta)
 
-	if Input.is_action_just_pressed("jump") && !TerminalManager.is_terminal_ui_open && is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		_squash(Vector2(1.4, 0.6))
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	if !TerminalManager.is_terminal_ui_open: 
-		_update_horizontal_velocity_by_input()  
-	
+		_update_horizontal_velocity_by_input()
+		
+	if Input.is_action_just_pressed("jump") && !TerminalManager.is_terminal_ui_open:
+		if is_on_floor():
+			velocity.y = JUMP_VELOCITY 
+			_squash(Vector2(1.4, 0.6))
+		elif _can_slide_jump:
+			var wall_normal: Vector2 = get_wall_normal()
+			velocity.y = JUMP_VELOCITY * 0.5
+			velocity.x = SPEED * 2 * wall_normal.x
+
 	was_on_floor = is_on_floor()
 	move_and_slide()
 
@@ -39,7 +51,10 @@ func _update_vertical_velocity(delta: float) -> void:
 	elif !was_on_floor:
 		_squash(Vector2(1.4, 0.6))
 	if !is_on_floor() && velocity.y > 0 && _direction && is_on_wall():
+		_is_wall_sliding = true
 		velocity.y += velocity.y * (-0.3)
+	else:
+		_is_wall_sliding = false 
 
 func _squash(scale: Vector2) -> void:
 	var tween: Tween = create_tween()
