@@ -3,10 +3,7 @@ class_name ToggleTiles
 extends TileMapLayer
 
 var _active: bool = true
-@export var color_when_disabled: float = 0.6
-
-func _ready() -> void:
-	toggle_disable()
+@export var color_when_disabled: float = 0.4
 
 func toggle_disable() -> void:
 	if _active: _deactivate()

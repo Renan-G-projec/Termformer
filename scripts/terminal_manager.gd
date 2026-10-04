@@ -32,7 +32,7 @@ func _on_command_sent(command: PackedStringArray) -> void:
 				if (node.has_method("toggle_disable")):
 					request_print_line.emit("NOD_DIS%d" % node_index)
 			return
-		"toggledisable":
+		"td":
 			if command.size() < 2:
 				request_print_line.emit("[color=red]Error:[/color] No argument was provided.")
 				return
@@ -52,3 +52,12 @@ func _on_command_sent(command: PackedStringArray) -> void:
 			if nodes[target].has_method("toggle_disable"):
 				nodes[target].toggle_disable()
 			return
+		"help":
+			_print_help()
+			return
+
+func _print_help() -> void:
+	request_print_line.emit("Termformer v0.0.1 alpha")
+	request_print_line.emit("Available commands:")
+	request_print_line.emit("ls - List connected devices")
+	request_print_line.emit("td <device_id: int> - toggle the activity of a connected device")
