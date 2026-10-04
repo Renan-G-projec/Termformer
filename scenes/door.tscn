@@ -7,6 +7,7 @@
 size = Vector2(64, 66)
 
 [node name="Door" type="Node2D" unique_id=414273485]
+position = Vector2(0, 1)
 script = ExtResource("1_uvdjg")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1674458429]

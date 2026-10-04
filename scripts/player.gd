@@ -1,7 +1,7 @@
 # Ad Maiorem Dei Gloriam!
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 
 
@@ -24,6 +24,10 @@ func _physics_process(delta: float) -> void:
 func _update_horizontal_velocity_by_input() -> void:
 	var direction := Input.get_axis("go_left", "go_right")
 	if direction:
+		%Sprite.flip_h = direction < 0
+		%Sprite.play("run")
 		velocity.x = direction * SPEED
 	else:
+		%Sprite.play("idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
