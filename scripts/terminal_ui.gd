@@ -25,17 +25,19 @@ func clear() -> void:
 	label.clear()
 
 func _on_input_line_text_submitted(new_text: String) -> void:
+	input.clear()
+	_focus()
+	
 	var sanitized_raw_command: String = new_text.strip_edges()
 	print_line(%Home.text + sanitized_raw_command)
 	
 	var basic_parsed_command: PackedStringArray = _parse_input(sanitized_raw_command)
+	if sanitized_raw_command.is_empty(): return
 	if (_built_in_commands.has(basic_parsed_command[0])):
 		_built_in_commands[basic_parsed_command[0]].call(basic_parsed_command)
 	else:
 		TerminalManager._command_sent_to_manager.emit(basic_parsed_command)
 	
-	input.clear()
-	_focus()
 
 func _focus() -> void:
 	input.release_focus()

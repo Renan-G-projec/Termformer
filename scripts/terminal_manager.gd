@@ -55,9 +55,11 @@ func _on_command_sent(command: PackedStringArray) -> void:
 		"help":
 			_print_help()
 			return
+		_:
+			request_print_line.emit("[color=red]Error:[/color] Command not found. type [color=cyan]help[/color] to see a list of available commands.")
 
 func _print_help() -> void:
-	request_print_line.emit("Termformer v0.0.1 alpha")
+	request_print_line.emit("Termformer v0.0.1 alpha. AMDG")
 	request_print_line.emit("Available commands:")
 	request_print_line.emit("ls - List connected devices")
 	request_print_line.emit("td <device_id: int> - toggle the activity of a connected device")
