@@ -30,6 +30,7 @@ tile_map_data = PackedByteArray("AAALAAQAAAAKAAgAAAALAAUAAAAMAAcAAAALAAYAAAAKAAc
 [node name="Door" parent="." unique_id=414273485 instance=ExtResource("5_ru4tf")]
 position = Vector2(251, 110)
 scale = Vector2(0.43971175, 0.5265836)
+target_level_path = "res://scenes/level2.tscn"
 
 [node name="Terminal" parent="." unique_id=1385730432 node_paths=PackedStringArray("connected_nodes") instance=ExtResource("6_ejswk")]
 position = Vector2(155, 128)
