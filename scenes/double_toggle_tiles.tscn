@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cc4cinqmugnnh"]
+
+[ext_resource type="Script" uid="uid://cv6glb6pr1jhv" path="res://scripts/double_toggle_tiles.gd" id="1_jkj0w"]
+[ext_resource type="PackedScene" uid="uid://vdpv1u8jcbrf" path="res://scenes/toggle_tiles.tscn" id="2_ib4ao"]
+
+[node name="DoubleToggleTiles" type="Node2D" unique_id=1403233049]
+script = ExtResource("1_jkj0w")
+
+[node name="ToggleTilesEnabled" parent="." unique_id=1826566946 instance=ExtResource("2_ib4ao")]
+unique_name_in_owner = true
+
+[node name="ToggleTilesDisabled" parent="." unique_id=515901443 instance=ExtResource("2_ib4ao")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.4)
+collision_enabled = false
+active = false

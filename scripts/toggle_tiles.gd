@@ -16,9 +16,9 @@ func toggle_disable() -> void:
 func _activate() -> void:
 	modulate.a = 1.0
 	tile_set.set_occlusion_layer_light_mask(0, 1)
-	tile_set.set_physics_layer_collision_layer(0, 1)
+	collision_enabled = true
 
 func _deactivate() -> void:
 	modulate.a = color_when_disabled
-	tile_set.set_physics_layer_collision_layer(0, 0)
 	tile_set.set_occlusion_layer_light_mask(0, 0)
+	collision_enabled = false
