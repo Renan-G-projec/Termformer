@@ -2,14 +2,30 @@
 extends Node2D
 
 @export_file_path("level*.tscn") var target_level_path: String
+@export var unlocked: bool = true
 @onready var area: Area2D = $Area2D
+
+var player_ref: Player = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if _is_interacting() && !target_level_path.is_empty():
-		assert(FileAccess.file_exists(target_level_path), "There is not a next file. If the game should end, transition must be made for the end scene.")
-		get_tree().change_scene_to_file(target_level_path)
+	if _is_interacting():
+		if unlocked: _go_to_target()
+		else: _try_consume_key()
+
+func _go_to_target() -> void:
+	assert(FileAccess.file_exists(target_level_path), "There is not a next file. If the game should end, transition must be made for the end scene.")
+	get_tree().change_scene_to_file(target_level_path)
 
 func _is_interacting() -> bool:
 	# Overlapping bodies. The area collision mask garantees that only the player will return true
 	return !TerminalManager.is_terminal_ui_open && Input.is_action_just_pressed("interact") && area.has_overlapping_bodies()
+
+func _try_consume_key() -> void:
+	if player_ref:
+		if player_ref.has_key:
+			player_ref.has_key = false
+			unlocked = true
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	player_ref = body as Player

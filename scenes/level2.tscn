@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cc4cinqmugnnh" path="res://scenes/double_toggle_tiles.tscn" id="6_yqkch"]
 [ext_resource type="PackedScene" uid="uid://d2kahpw7oovys" path="res://scenes/door.tscn" id="7_6ep0u"]
 [ext_resource type="PackedScene" uid="uid://cmg7345oakwf0" path="res://scenes/small_light_bulb.tscn" id="8_hrcei"]
+[ext_resource type="PackedScene" uid="uid://cox674hsm0c5u" path="res://scenes/key.tscn" id="8_xa7n4"]
 
 [node name="Level2" type="Node2D" unique_id=962637385]
 
@@ -31,6 +32,8 @@ visible = false
 [node name="Door" parent="." unique_id=414273485 instance=ExtResource("7_6ep0u")]
 position = Vector2(154, 243)
 scale = Vector2(0.393, 0.393)
+target_level_path = "res://scenes/level1.tscn"
+unlocked = false
 
 [node name="DoubleToggleTiles" parent="." unique_id=1403233049 instance=ExtResource("6_yqkch")]
 
@@ -64,5 +67,8 @@ position = Vector2(235, 75)
 
 [node name="SmallLightBulb5" parent="Lights" unique_id=608727818 instance=ExtResource("8_hrcei")]
 position = Vector2(387, 4)
+
+[node name="Key" parent="." unique_id=285487177 instance=ExtResource("8_xa7n4")]
+position = Vector2(48, 151)
 
 [editable path="DoubleToggleTiles"]

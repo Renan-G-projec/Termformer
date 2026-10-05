@@ -1,4 +1,5 @@
 # Ad Maiorem Dei Gloriam!
+class_name Player
 extends CharacterBody2D
 
 const ACCELERATION = 800.0
@@ -10,6 +11,7 @@ const STRETCH_LERP_MULTIPLIER = 7.5
 const STRETCH_EFFECT = Vector2(0.7, 1.4)
 const SQUASH_EFFECT = Vector2(1.4, 0.7)
 
+var has_key: bool = false
 var was_on_floor: bool
 var _direction: float = 0.0 
 var _input_multiplier: float = 1.2
