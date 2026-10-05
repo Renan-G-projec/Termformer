@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://uk0pil70x3cy" path="res://scripts/movable_platform.gd" id="1_aqu2r"]
 [ext_resource type="Texture2D" uid="uid://bo7ob0wn1xe4u" path="res://icon.svg" id="1_jibo3"]
 
-[sub_resource type="Curve2D" id="Curve2D_aqu2r"]
+[sub_resource type="Curve2D" id="Curve2D_83u3d"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 149, -1)
 }
 point_count = 2
 
@@ -13,12 +13,14 @@ point_count = 2
 size = Vector2(32, 32)
 
 [node name="MovablePlatform" type="Path2D" unique_id=1336651477]
-curve = SubResource("Curve2D_aqu2r")
+curve = SubResource("Curve2D_83u3d")
 script = ExtResource("1_aqu2r")
 transition_type = 4
 
 [node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=409074289]
+unique_name_in_owner = true
 rotates = false
+loop = false
 
 [node name="StaticBody2D" type="AnimatableBody2D" parent="PathFollow2D" unique_id=850572071]
 collision_layer = 2
