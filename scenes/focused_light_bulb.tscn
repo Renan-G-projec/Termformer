@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dyidjopm14ly"]
+
+[ext_resource type="Texture2D" uid="uid://bo7ob0wn1xe4u" path="res://icon.svg" id="1_mo13s"]
+
+[sub_resource type="Gradient" id="Gradient_mo13s"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jvjyb"]
+gradient = SubResource("Gradient_mo13s")
+fill = 1
+fill_from = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[node name="FocusedLightBulb" type="Node2D" unique_id=1719022275]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1704158202]
+scale = Vector2(0.078124985, 0.078124985)
+texture = ExtResource("1_mo13s")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=287536833]
+position = Vector2(0, 48)
+scale = Vector2(0.5, 1)
+color = Color(0.32941177, 0.3372549, 0.72156864, 1)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_jvjyb")
+texture_scale = 1.5
