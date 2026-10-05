@@ -5,6 +5,11 @@ const ACCELERATION = 800.0
 const JUMP_VELOCITY = -300.0
 const MAX_SPEED = 150.0
 
+# Between 7 and 10 ideally
+const STRETCH_LERP_MULTIPLIER = 7.5
+const STRETCH_EFFECT = Vector2(0.7, 1.4)
+const SQUASH_EFFECT = Vector2(1.4, 0.7)
+
 var was_on_floor: bool
 var _direction: float = 0.0 
 var _input_multiplier: float = 1.2
@@ -28,16 +33,20 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") && !TerminalManager.is_terminal_ui_open:
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY 
-			_squash(Vector2(1.4, 0.6))
+			_squash(STRETCH_EFFECT)
 		elif _can_slide_jump:
 			var wall_normal: Vector2 = get_wall_normal()
 			velocity.y = JUMP_VELOCITY * 0.8
 			velocity.x = MAX_SPEED * wall_normal.x * 1.3
+			_squash(STRETCH_EFFECT)
 
 	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 	was_on_floor = is_on_floor()
 	move_and_slide()
 
+func _process(delta: float) -> void:
+	_squash_update(delta)
+	
 func _update_horizontal_velocity_by_input(delta: float) -> void:
 	_direction = Input.get_axis("go_left", "go_right") * _input_multiplier
 	if _direction:
@@ -53,17 +62,19 @@ func _update_vertical_velocity(delta: float) -> void:
 	if !is_on_floor():
 		velocity += get_gravity() * delta
 	elif !was_on_floor:
-		_squash(Vector2(1.4, 0.6))
+		_squash(SQUASH_EFFECT)
 	if !is_on_floor() && velocity.y > 0 && _direction && is_on_wall():
 		_is_wall_sliding = true
 		velocity.y += velocity.y * (-0.3)
 	else:
 		_is_wall_sliding = false 
 
-func _squash(scale: Vector2) -> void:
-	var tween: Tween = create_tween()
-	tween.tween_property(%Sprite, "scale", scale, 0.01).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(%Sprite, "scale", _initial_scale, 0.1).set_trans(Tween.TRANS_QUAD)
+func _squash(stretched_scale: Vector2) -> void:
+	%Sprite.scale = stretched_scale
+	
+func _squash_update(delta: float) -> void:
+	%Sprite.scale.x = lerp(%Sprite.scale.x, 1.0, STRETCH_LERP_MULTIPLIER * delta)
+	%Sprite.scale.y = lerp(%Sprite.scale.y, 1.0, STRETCH_LERP_MULTIPLIER * delta)
 
 func _lock_input(time: float) -> void:
 	_input_multiplier = 0.0
