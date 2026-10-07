@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cmg7345oakwf0"]
 
-[ext_resource type="Texture2D" uid="uid://bo7ob0wn1xe4u" path="res://icon.svg" id="1_vthir"]
+[ext_resource type="Texture2D" uid="uid://duqbxjet6612y" path="res://sprites/Light.png" id="1_w78hf"]
 
 [sub_resource type="Gradient" id="Gradient_e3e1c"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -14,9 +14,9 @@ metadata/_snap_enabled = true
 
 [node name="SmallLightBulb" type="Node2D" unique_id=1719022275]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1704158202]
-scale = Vector2(0.078124985, 0.078124985)
-texture = ExtResource("1_vthir")
+[node name="Light" type="Sprite2D" parent="." unique_id=404352512]
+position = Vector2(0, -41)
+texture = ExtResource("1_w78hf")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=287536833]
 color = Color(0.32941177, 0.3372549, 0.72156864, 1)
