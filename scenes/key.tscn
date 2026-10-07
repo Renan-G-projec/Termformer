@@ -1,17 +1,63 @@
 [gd_scene format=3 uid="uid://cox674hsm0c5u"]
 
 [ext_resource type="Script" uid="uid://bgcx8jmnn11gk" path="res://scripts/key.gd" id="1_fttkb"]
-[ext_resource type="Texture2D" uid="uid://bo7ob0wn1xe4u" path="res://icon.svg" id="1_yk2u2"]
+[ext_resource type="Texture2D" uid="uid://d21vshlvas8p8" path="res://sprites/Key.png" id="2_fttkb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wy8tx"]
+atlas = ExtResource("2_fttkb")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcln5"]
+atlas = ExtResource("2_fttkb")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4qnb"]
+atlas = ExtResource("2_fttkb")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t41w"]
+atlas = ExtResource("2_fttkb")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljj5h"]
+atlas = ExtResource("2_fttkb")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upbuq"]
+atlas = ExtResource("2_fttkb")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cac7"]
+atlas = ExtResource("2_fttkb")
+region = Rect2(168, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ocxxs"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_yk2u2")
+"texture": SubResource("AtlasTexture_wy8tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcln5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4qnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t41w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljj5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upbuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cac7")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 8.5
 }]
 
 [sub_resource type="Gradient" id="Gradient_fttkb"]
@@ -31,11 +77,13 @@ size = Vector2(18, 18)
 script = ExtResource("1_fttkb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=872380336]
-modulate = Color(1, 0.79607844, 0, 1)
-scale = Vector2(0.1875, 0.1875)
+unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_ocxxs")
+autoplay = "default"
+frame_progress = 0.9867357
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=725635791]
+unique_name_in_owner = true
 color = Color(1, 0.8509804, 0.29803923, 1)
 texture = SubResource("GradientTexture2D_ocxxs")
 

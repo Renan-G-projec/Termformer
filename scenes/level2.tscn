@@ -109,13 +109,13 @@ tile_set = SubResource("TileSet_ocxxs")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="MapBackground" unique_id=1677103084]
 top_level = true
-color = Color(0.39464742, 0.3946475, 0.39464733, 1)
+color = Color(0.30238307, 0.3023831, 0.302383, 1)
 
 [node name="Lights" type="Node2D" parent="." unique_id=755968815]
-position = Vector2(45, 85)
+position = Vector2(0, 1)
 
 [node name="SmallLightBulb" parent="Lights" unique_id=1719022275 instance=ExtResource("8_hrcei")]
-position = Vector2(109, 140)
+position = Vector2(138, 30)
 
 [node name="SmallLightBulb2" parent="Lights" unique_id=1569652141 instance=ExtResource("8_hrcei")]
 position = Vector2(71, 7)
@@ -158,6 +158,6 @@ connected_nodes = [NodePath("../DoubleToggleTiles")]
 position = Vector2(-4, 154)
 
 [node name="Key" parent="." unique_id=285487177 instance=ExtResource("8_xa7n4")]
-position = Vector2(48, 151)
+position = Vector2(495, 256)
 
 [editable path="DoubleToggleTiles"]
