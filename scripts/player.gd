@@ -26,6 +26,11 @@ var _is_wall_sliding: bool = false: # To see if it can jump
 
 @onready var _initial_scale: Vector2 = scale
 
+func trigger_collected_item_effect() -> void:
+	_squash(Vector2(1.6, 0.4))
+	%Sprite.modulate = Color(20.0, 20.0, 20.0, 1.0)
+	create_tween().tween_property(%Sprite, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.4).set_trans(Tween.TRANS_QUAD)
+
 func _physics_process(delta: float) -> void:
 	_update_vertical_velocity(delta)
 

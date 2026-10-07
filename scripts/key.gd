@@ -5,6 +5,8 @@ extends Node2D
 
 func _on_area_2d_body_entered(player: Player) -> void:
 	player.has_key = true
+	player.trigger_collected_item_effect()
+	%Area2D.body_entered.disconnect(_on_area_2d_body_entered)
 	_destroy()
 	
 func _destroy() -> void:

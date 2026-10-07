@@ -80,7 +80,7 @@ script = ExtResource("1_fttkb")
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_ocxxs")
 autoplay = "default"
-frame_progress = 0.9867357
+frame_progress = 0.40079898
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=725635791]
 unique_name_in_owner = true
@@ -88,6 +88,7 @@ color = Color(1, 0.8509804, 0.29803923, 1)
 texture = SubResource("GradientTexture2D_ocxxs")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1715455936]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1254726736]
 shape = SubResource("RectangleShape2D_ocxxs")

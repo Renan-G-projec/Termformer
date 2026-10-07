@@ -158,6 +158,6 @@ connected_nodes = [NodePath("../DoubleToggleTiles")]
 position = Vector2(-4, 154)
 
 [node name="Key" parent="." unique_id=285487177 instance=ExtResource("8_xa7n4")]
-position = Vector2(495, 256)
+position = Vector2(23, 152)
 
 [editable path="DoubleToggleTiles"]
