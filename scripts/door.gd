@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 
 func _go_to_target() -> void:
 	assert(FileAccess.file_exists(target_level_path), "There is not a next file. If the game should end, transition must be made for the end scene.")
-	get_tree().change_scene_to_file(target_level_path)
+	Transition.go_to_scene(target_level_path)
 
 func _is_interacting() -> bool:
 	# Overlapping bodies. The area collision mask garantees that only the player will return true

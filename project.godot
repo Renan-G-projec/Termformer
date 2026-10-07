@@ -18,6 +18,7 @@ boot_splash/show_image=false
 [autoload]
 
 TerminalManager="*uid://bb8f7ebs58v1k"
+Transition="*uid://duqxtdwdmixx4"
 
 [debug]
 
