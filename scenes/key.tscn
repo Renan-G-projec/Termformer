@@ -73,6 +73,10 @@ metadata/_snap_enabled = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocxxs"]
 size = Vector2(18, 18)
 
+[sub_resource type="Gradient" id="Gradient_wy8tx"]
+offsets = PackedFloat32Array(0.0042523732, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="Key" type="Node2D" unique_id=285487177]
 script = ExtResource("1_fttkb")
 
@@ -80,7 +84,7 @@ script = ExtResource("1_fttkb")
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_ocxxs")
 autoplay = "default"
-frame_progress = 0.40079898
+frame_progress = 0.41561076
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=725635791]
 unique_name_in_owner = true
@@ -92,5 +96,21 @@ unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1254726736]
 shape = SubResource("RectangleShape2D_ocxxs")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1429849294]
+emitting = false
+amount = 14
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.8
+randomness = 0.31
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+radial_accel_min = -30.0
+radial_accel_max = -30.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_wy8tx")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -154,10 +154,10 @@ tile_map_data = PackedByteArray("AAAGAAwAAAAMAAgAAAAHAAwAAAAJAAcAAAAIAAwAAAAJAAc
 position = Vector2(381, 160)
 connected_nodes = [NodePath("../DoubleToggleTiles")]
 
-[node name="Player" parent="." unique_id=1535334802 instance=ExtResource("2_2k3dv")]
-position = Vector2(-4, 154)
-
 [node name="Key" parent="." unique_id=285487177 instance=ExtResource("8_xa7n4")]
 position = Vector2(23, 152)
+
+[node name="Player" parent="." unique_id=1535334802 instance=ExtResource("2_2k3dv")]
+position = Vector2(-4, 154)
 
 [editable path="DoubleToggleTiles"]
