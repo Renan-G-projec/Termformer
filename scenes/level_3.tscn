@@ -26,8 +26,7 @@ tile_map_data = PackedByteArray("AAApABwAAAAFAAUAAAAsAB4AAAABAAUAAAArAB0AAAADAAU
 tile_set = ExtResource("1_p6vls")
 
 [node name="Door" parent="." unique_id=414273485 instance=ExtResource("3_wae8j")]
-position = Vector2(834, 109.999985)
-scale = Vector2(0.43971175, 0.5265836)
+position = Vector2(834, 109)
 target_level_path = "res://scenes/level2.tscn"
 unlocked = false
 

@@ -7,6 +7,9 @@ extends Node2D
 
 var player_ref: Player = null
 
+func _ready() -> void:
+	_sync_sprite_light()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if _is_interacting():
@@ -29,3 +32,21 @@ func _try_consume_key() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	player_ref = body as Player
+	_start_animation()
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	_end_animation()
+	
+func _start_animation() -> void:
+	%Sprite.play()
+
+func _end_animation() -> void:
+	%Sprite.play_backwards()
+
+func _on_sprite_frame_changed() -> void:
+	_sync_sprite_light()
+
+func _sync_sprite_light() -> void:
+	var animation_progress: float = 1.0 / %Sprite.sprite_frames.get_frame_count("default") * %Sprite.frame
+	%PointLight2D.energy = animation_progress
+	%PointLight2D.texture_scale = 2 * animation_progress

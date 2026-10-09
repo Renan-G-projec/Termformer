@@ -1,7 +1,60 @@
 [gd_scene format=3 uid="uid://d2kahpw7oovys"]
 
-[ext_resource type="Texture2D" uid="uid://bo7ob0wn1xe4u" path="res://icon.svg" id="1_hpvv5"]
 [ext_resource type="Script" uid="uid://cvjj6d8p53wd2" path="res://scripts/door.gd" id="1_uvdjg"]
+[ext_resource type="Texture2D" uid="uid://34pwu1kw0q01" path="res://sprites/Door.png" id="2_uvdjg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83dcw"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(0, 0, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la1wf"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(32, 0, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18pbm"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(64, 0, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5w8r"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(96, 0, 32, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t58dd"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(128, 0, 32, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hpvv5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83dcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_la1wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18pbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5w8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t58dd")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_uvdjg"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ocxxs"]
+gradient = SubResource("Gradient_uvdjg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocxxs"]
 size = Vector2(64, 66)
@@ -9,16 +62,23 @@ size = Vector2(64, 66)
 [node name="Door" type="Node2D" unique_id=414273485]
 script = ExtResource("1_uvdjg")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1674458429]
-modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
-position = Vector2(0.49999905, -0.49999905)
-scale = Vector2(0.5078125, 0.5078125)
-texture = ExtResource("1_hpvv5")
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1113771235]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_hpvv5")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1336613599]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+color = Color(1, 0.2901961, 0.39215687, 1)
+texture = SubResource("GradientTexture2D_ocxxs")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1336032945]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=924266440]
 shape = SubResource("RectangleShape2D_ocxxs")
 
+[connection signal="frame_changed" from="Sprite" to="." method="_on_sprite_frame_changed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
