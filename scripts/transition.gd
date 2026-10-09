@@ -7,6 +7,7 @@ var _in_transition: bool = false
 var _progress: float = 0.0
 
 func go_to_scene(scene: String) -> void:
+	if _in_transition: return
 	_in_transition = true
 	
 	var tween: Tween = create_tween()
