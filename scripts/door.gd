@@ -32,7 +32,8 @@ func _try_consume_key() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	player_ref = body as Player
-	_start_animation()
+	if unlocked:
+		_start_animation()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	_end_animation()

@@ -27,7 +27,6 @@ func go_to_scene(scene: String) -> void:
 
 func _process(delta: float) -> void:
 	if !_in_transition: return
-	print(_progress)
 	var shader: ShaderMaterial = %ColorRect.material as ShaderMaterial
 	if shader:
 		shader.set_shader_parameter("animation_progress", _progress)
