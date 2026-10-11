@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://vdpv1u8jcbrf" path="res://scenes/toggle_tiles.tscn" id="2_ru4tf"]
 [ext_resource type="TileSet" uid="uid://bqmqw2t4j8q16" path="res://tilesets/lab_tileset.tres" id="3_m7ahb"]
 [ext_resource type="PackedScene" uid="uid://bqjpqbdcyk853" path="res://scenes/player.tscn" id="4_dwgg1"]
+[ext_resource type="PackedScene" uid="uid://b15si6o8nahlr" path="res://scenes/interact_key_tutorial.tscn" id="5_ejswk"]
 [ext_resource type="PackedScene" uid="uid://d2kahpw7oovys" path="res://scenes/door.tscn" id="5_ru4tf"]
 [ext_resource type="PackedScene" uid="uid://tss8vcydwxiv" path="res://scenes/terminal.tscn" id="6_ejswk"]
 
@@ -17,7 +18,6 @@ occlusion_enabled = false
 collision_enabled = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="MapBackground" unique_id=1677103084]
-top_level = true
 color = Color(0.39464742, 0.3946475, 0.39464733, 1)
 
 [node name="Map" type="TileMapLayer" parent="." unique_id=766824149]
@@ -35,6 +35,11 @@ target_level_path = "res://scenes/level2.tscn"
 position = Vector2(155, 128)
 scale = Vector2(1, 0.99999994)
 connected_nodes = [NodePath("../ToggleTiles")]
+
+[node name="InteractKeyTutorial" parent="Terminal" unique_id=580105405 instance=ExtResource("5_ejswk")]
+visible = false
+modulate = Color(2.3422987, 2.3422987, 2.3422987, 1)
+scale = Vector2(1, 1.0000001)
 
 [node name="Player" parent="." unique_id=1535334802 instance=ExtResource("4_dwgg1")]
 position = Vector2(70, 85)

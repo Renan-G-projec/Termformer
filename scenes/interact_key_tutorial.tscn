@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://b15si6o8nahlr"]
+
+[ext_resource type="Script" uid="uid://bp8ua1d85bthr" path="res://scripts/interact_key_tutorial.gd" id="1_t65d6"]
+[ext_resource type="Texture2D" uid="uid://dfg8v8aigchvj" path="res://sprites/InteractKeyTutorial.png" id="1_xi5as"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocxxs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t65d6"]
+atlas = ExtResource("1_xi5as")
+region = Rect2(0, 0, 15, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh0uh"]
+atlas = ExtResource("1_xi5as")
+region = Rect2(15, 0, 15, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1cr6"]
+atlas = ExtResource("1_xi5as")
+region = Rect2(30, 0, 15, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujng5"]
+atlas = ExtResource("1_xi5as")
+region = Rect2(45, 0, 15, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ocxxs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t65d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh0uh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1cr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujng5")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="InteractKeyTutorial" type="Area2D" unique_id=580105405]
+script = ExtResource("1_t65d6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1174208800]
+shape = SubResource("RectangleShape2D_ocxxs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1266582883]
+unique_name_in_owner = true
+light_mask = 4
+visibility_layer = 4
+z_index = 4
+sprite_frames = SubResource("SpriteFrames_ocxxs")
+offset = Vector2(0, -42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
