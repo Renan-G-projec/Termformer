@@ -29,6 +29,10 @@ func _try_consume_key() -> void:
 		if player_ref.has_key:
 			player_ref.has_key = false
 			unlocked = true
+			_start_animation()
+			_squash(Vector2(1.1, 0.9), Color.LIME)
+		else:
+			_squash(Vector2(0.8, 0.99), Color.RED)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	player_ref = body as Player
@@ -36,7 +40,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		_start_animation()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	_end_animation()
+	if unlocked:
+		_end_animation()
 	
 func _start_animation() -> void:
 	%Sprite.play()
@@ -51,3 +56,22 @@ func _sync_sprite_light() -> void:
 	var animation_progress: float = 1.0 / %Sprite.sprite_frames.get_frame_count("default") * %Sprite.frame
 	%PointLight2D.energy = animation_progress
 	%PointLight2D.texture_scale = 2 * animation_progress
+
+func _squash(_scale: Vector2, light_fade_color: Color = Color.TRANSPARENT):
+	var orig_color: Color = %PointLight2D.color
+	var orig_scale: float = %PointLight2D.texture_scale
+	
+	%PointLight2D.energy = 0.4
+	%PointLight2D.texture_scale = 2.4
+	
+	%PointLight2D.color = light_fade_color
+	%Sprite.scale = _scale
+	
+	var tween := create_tween()
+	tween.set_parallel()
+	tween.tween_property(%Sprite, "scale", Vector2.ONE, 0.4).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(%PointLight2D, "energy", 0.0, 0.4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(%PointLight2D, "texture_scale", orig_scale, 0.7).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	await tween.finished
+	%PointLight2D.color = orig_color

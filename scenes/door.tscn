@@ -64,7 +64,9 @@ script = ExtResource("1_uvdjg")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1113771235]
 unique_name_in_owner = true
+position = Vector2(0, 19)
 sprite_frames = SubResource("SpriteFrames_hpvv5")
+offset = Vector2(0, -19)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1336613599]
 unique_name_in_owner = true
