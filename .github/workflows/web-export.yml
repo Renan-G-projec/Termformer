@@ -3,7 +3,7 @@
 name: "Export to web"
 on:
   push:
-    branch: main
+    branches: main
   workflow_dispatch: 
 
 env:
